@@ -211,9 +211,45 @@ function hello() {
 
     <hr>
 
+    <section id="food">
+        <h2>Food Database</h2>
+        <div id="food-container" style="display: flex; flex-wrap: wrap; gap: 20px;"></div>
+    </section>
+
+    <hr>
+
     <footer>
         <p><small>&copy; 2026 HTML Tags Demo. Built with <strong>HTML only</strong> — no CSS or JavaScript.</small></p>
     </footer>
 
+    <script src="my-object.js"></script>
+    <script>
+        const container = document.getElementById('food-container');
+
+        foodDatabase.forEach(item => {
+            const card = document.createElement('div');
+            card.style.cssText = 'border: 1px solid #ccc; border-radius: 8px; padding: 16px; width: 200px; text-align: center;';
+
+            const img = document.createElement('img');
+            img.src = item.picture;
+            img.alt = item.name;
+            img.style.cssText = 'width: 100%; height: 150px; object-fit: cover; border-radius: 4px;';
+
+            const name = document.createElement('h3');
+            name.textContent = item.name;
+
+            const cuisine = document.createElement('p');
+            cuisine.textContent = `Cuisine: ${item.cuisine}`;
+
+            const origin = document.createElement('p');
+            origin.textContent = `Origin: ${item.origin}`;
+
+            const veg = document.createElement('p');
+            veg.textContent = `Vegetarian: ${item.vegetarian ? 'Yes' : 'No'}`;
+
+            card.append(img, name, cuisine, origin, veg);
+            container.appendChild(card);
+        });
+    </script>
 </body>
 </html>
